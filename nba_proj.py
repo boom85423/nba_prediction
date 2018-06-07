@@ -155,7 +155,8 @@ if __name__ == "__main__":
         nba_away_name = res[5]
         nba_home_name = res[6]
         get_vs()
-        nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv") 
+        # https://github.com/boom85423/FinalProject
+        nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv")
         print("1st", nba_dict)
         print("------predict------")
         for i in range(len(nba_away_name)):
