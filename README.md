@@ -1,5 +1,5 @@
 # Final Project (Who is champion?)
-<h2>Requirements</h2>
+## Requirements
 * PhantomJS
 * nba.csv
 * gs_2017.jpg
