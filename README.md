@@ -1,5 +1,5 @@
 # 數據科學實務：使用Python (Final Project)
-## Requirements :
+## Requirements
 * PhantomJS
 * nba.csv
 * gs_2017.jpg
