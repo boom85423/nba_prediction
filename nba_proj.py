@@ -146,7 +146,7 @@ if __name__ == "__main__":
     warnings.filterwarnings('ignore')
     year_month_day = get_today()
     # Input should be a date format like '20180611'        
-    res = get_1st('20180606')    
+    res = get_1st(year_month_day)    
     try:
         assert res != None
         nba_dict = res[0]
