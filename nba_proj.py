@@ -21,7 +21,7 @@ def predict(team):
     return y1
 
 def get_scatter(team):
-    nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv")    
+    nba = pd.read_csv("/Users/kevin102575/Desktop/nba.csv")    
     x = nba['1st']
     y = nba['total']
     lm = LinearRegression()    
@@ -34,7 +34,7 @@ def get_scatter(team):
 
 def get_performance():
     '''Get the MSE and r squared about the regression model'''
-    nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv")    
+    nba = pd.read_csv("/Users/kevin102575/Desktop/nba.csv")    
     x = np.reshape(nba['1st'], (len(nba['1st']),1))
     y = np.reshape(nba['total'], (len(nba['total']),1))
     lm = LinearRegression()
@@ -48,6 +48,7 @@ def get_1st(year_month_day):
     '''Get information about score in dictionary format'''
     date = str(year_month_day)
     url = "http://www.espn.com/nba/scoreboard/_/date/" + date
+    # Install PhantomJS before crawling
     driver = webdriver.PhantomJS(executable_path="/Users/kevin102575/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs")
     driver.get(url)
     PageSource = driver.page_source
@@ -59,13 +60,13 @@ def get_1st(year_month_day):
     nba_away_name = []
     nba_home_name = []
     
-    #nba_away_1st
+    # nba_away_1st
     away = soup.find_all("tr", {"class":"away"})
     try:
-        #correct date or coming soon
+        # correct date or coming soon
         assert len(away) > 0
         away_score = []
-        #out if index
+        # out if index
         for i in range(len(away)):
             away_score.append(away[i].find_all("td",{"class":"score"}))
             nba_away_name.append(away[i].find("span", {"class":"sb-team-abbrev"}).text)
@@ -75,7 +76,7 @@ def get_1st(year_month_day):
         for i in away_1st:
             nba_away_1st.append(i)
 
-        #nba_home_1st
+        # nba_home_1st
         home = soup.find_all("tr", {"class":"home"})
         home_score = []
         for i in range(len(home)):
@@ -87,14 +88,14 @@ def get_1st(year_month_day):
         for i in home_1st:
             nba_home_1st.append(i)
 
-        #nba_away_total
+        # nba_away_total
         away_total = []
         for i in range(len(away)):
             away_total.append(away[i].find("td",{"class":"total"}).text)
         for i in away_total:
             nba_away_total.append(i)
 
-        #nba_home_total
+        # nba_home_total
         home_total = []
         for i in range(len(home)):
             home_total.append(home[i].find("td",{"class":"total"}).text)
@@ -113,7 +114,7 @@ def get_1st(year_month_day):
         print("Coming soon")
 
 def update_csv(nba_away_1st, nba_home_1st, nba_away_total, nba_home_total, nba_away_name, nba_home_name):
-    nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv")
+    nba = pd.read_csv("/Users/kevin102575/Desktop/nba.csv")
     x_csv = list(nba["1st"])
     y_csv = list(nba["total"])
     name_csv = list(nba["name"])
@@ -122,7 +123,7 @@ def update_csv(nba_away_1st, nba_home_1st, nba_away_total, nba_home_total, nba_a
     name = name_csv + nba_away_name + nba_home_name
     data = {"1st":x, "total":y, "name":name}
     nba = pd.DataFrame(data)
-    nba.to_csv("/Users/kevin102575/Desktop/recent.csv")
+    nba.to_csv("/Users/kevin102575/Desktop/nba.csv")
 
 def get_today():
     '''USA CT time zone'''
@@ -144,7 +145,8 @@ def get_vs():
 if __name__ == "__main__":
     warnings.filterwarnings('ignore')
     year_month_day = get_today()
-    res = get_1st(year_month_day)
+    # Input should be a date format like '20180611'        
+    res = get_1st('20180606')    
     try:
         assert res != None
         nba_dict = res[0]
@@ -155,8 +157,8 @@ if __name__ == "__main__":
         nba_away_name = res[5]
         nba_home_name = res[6]
         get_vs()
-        # https://github.com/boom85423/FinalProject
-        nba = pd.read_csv("/Users/kevin102575/Desktop/recent.csv")
+        # Download csv form https://github.com/boom85423/FinalProject
+        nba = pd.read_csv("/Users/kevin102575/Desktop/nba.csv") 
         print("1st", nba_dict)
         print("------predict------")
         for i in range(len(nba_away_name)):
@@ -165,7 +167,7 @@ if __name__ == "__main__":
             print("{0}_total {1}".format(nba_home_name[i], predict(nba_home_name[i])))
         for i in range(len(nba_away_name)):
             get_winner(nba_away_name[i], nba_home_name[i])    
-        #get_performance()        
-        #get_scatter("CLE")    
+        # get_performance()        
+        # get_scatter("CLE")    
     except:
         pass
