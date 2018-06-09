@@ -7,11 +7,11 @@
         <li>nba.csv</li>
         <li>gs_2107.jpg</li>
     </ul>
-    <h2>Lab1</h2>   
+    <h2>Lab1 : nba_proj.py</h2>   
     <ul class="mylist">
         <li>regression</li>
     </ul>
-    <h2>Lab2</h2>
+    <h2>Lab2 : nba_ts.py</h2>
     <ul class="mylist">
         <li>similarity</li>    
     </ul>
