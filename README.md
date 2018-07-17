@@ -9,7 +9,7 @@
     </ul>
     <h2>Lab1 : nba_proj.py</h2>   
     <ul class="mylist">
-        <li>regression</li>
+        <li>regression with sklearn</li>
         <ul class="about">
             <li>Use 1st score to predict the total.</li>
         </ul>
@@ -17,7 +17,7 @@
     </ul>
     <h2>Lab2 : nba_ts.py</h2>
     <ul class="mylist">
-        <li>similarity</li>   
+        <li>similarity with opencv</li>   
         <ul class="about">
             <li>Find the most similar time series plot with last lear champion about score</li>
         </ul>
