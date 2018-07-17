@@ -11,14 +11,14 @@
     <ul class="mylist">
         <li>regression</li>
         <ul class="about">
-            <a>Use 1st score to predict the total.</a>
+            <li>Use 1st score to predict the total.</li>
         </ul>
     </ul>
     <h2>Lab2 : nba_ts.py</h2>
     <ul class="mylist">
         <li>similarity</li>   
         <ul class="about">
-            <a>Find the most similar time series plot with last lear champion about score</a>
+            <li>Find the most similar time series plot with last lear champion about score</li>
         </ul>
     </ul>
 </p>
