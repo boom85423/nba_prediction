@@ -12,15 +12,15 @@
         <li>regression</li>
         <ul class="about">
             <li>Use 1st score to predict the total.</li>
-            <img src="https://i.imgur.com/XfuWt3T.png">
         </ul>
+        <img src="https://i.imgur.com/XfuWt3T.png">
     </ul>
     <h2>Lab2 : nba_ts.py</h2>
     <ul class="mylist">
         <li>similarity</li>   
         <ul class="about">
             <li>Find the most similar time series plot with last lear champion about score</li>
-            <img src="https://i.imgur.com/ce8J1O0.jpg">
         </ul>
+        <img src="https://i.imgur.com/ce8J1O0.jpg">
     </ul>
 </p>
